@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <unordered_map>
 using namespace std;
 
 void solve() {
@@ -8,43 +7,36 @@ void solve() {
   while (t--) {
     string a, b, c;
     cin >> a >> b >> c;
+    int n = a.size(), m = b.size();
 
-    int diff = abs((int)(a.size() - b.size()));
+    int dp[n + 1][m + 1];
+    memset(&dp, 0, sizeof dp);
 
-    unordered_map<char, int> amap, bmap, cmap;
+    dp[0][0] = 0;
 
-    string end = c.substr(c.size() - diff);
+    for (auto i = 1; i <= n; i++) {
+      dp[i][0] = dp[i - 1][0] + ((c[i - 1] == a[i - 1]) ? 0 : 1);
+    }
 
-    while (end.size() > 0) {
-      if (a.size() >= end.size() &&
-          a.compare(a.size() - end.size(), end.size(), end) == 0) {
-        a.erase(a.size() - end.size(), end.size());
-        break;
+    for (auto i = 1; i <= m; i++) {
+      dp[0][i] = dp[0][i - 1] + ((c[i - 1] == b[i - 1]) ? 0 : 1);
+    }
+
+    for (auto i = 1; i <= n; i++) {
+      for (auto j = 1; j <= m; j++) {
+        dp[i][j] = min(dp[i - 1][j] + ((c[i + j - 1] == a[i - 1]) ? 0 : 1),
+                       dp[i][j - 1] + ((c[i + j - 1] == b[j - 1]) ? 0 : 1));
       }
-      if (b.size() >= end.size() &&
-          b.compare(b.size() - end.size(), end.size(), end) == 0) {
-        b.erase(b.size() - end.size(), end.size());
-        break;
-      }
-
-      end.erase(0, 1);
     }
 
-    cout << end << '\n';
+    // for (auto i = 0; i <= n; i++) {
+    //   for (auto j = 0; j <= n; j++) {
+    //     cout << dp[i][j] << " ";
+    //   }
+    //   cout << '\n';
+    // }
 
-    for (int i = 0; i < a.size(); i++) {
-      amap[a[i]]++;
-    }
-    for (int i = 0; i < b.size(); i++) {
-      bmap[b[i]]++;
-    }
-    for (int i = 0; i < c.size() - end.size(); i++) {
-      cmap[c[i]] = cmap[c[i]] + 1;
-    }
-
-    for (const auto &pair : cmap) {
-      cout << pair.first << ": " << pair.second << '\n';
-    }
+    cout << dp[n][m] << '\n';
   }
 }
 

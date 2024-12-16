@@ -1,0 +1,15 @@
+/home/andrew_zol/projects/codeforces/443/A/prog/bin/Debug/net8.0/prog
+/home/andrew_zol/projects/codeforces/443/A/prog/bin/Debug/net8.0/prog.deps.json
+/home/andrew_zol/projects/codeforces/443/A/prog/bin/Debug/net8.0/prog.runtimeconfig.json
+/home/andrew_zol/projects/codeforces/443/A/prog/bin/Debug/net8.0/prog.dll
+/home/andrew_zol/projects/codeforces/443/A/prog/bin/Debug/net8.0/prog.pdb
+/home/andrew_zol/projects/codeforces/443/A/prog/obj/Debug/net8.0/prog.GeneratedMSBuildEditorConfig.editorconfig
+/home/andrew_zol/projects/codeforces/443/A/prog/obj/Debug/net8.0/prog.AssemblyInfoInputs.cache
+/home/andrew_zol/projects/codeforces/443/A/prog/obj/Debug/net8.0/prog.AssemblyInfo.cs
+/home/andrew_zol/projects/codeforces/443/A/prog/obj/Debug/net8.0/prog.csproj.CoreCompileInputs.cache
+/home/andrew_zol/projects/codeforces/443/A/prog/obj/Debug/net8.0/prog.sourcelink.json
+/home/andrew_zol/projects/codeforces/443/A/prog/obj/Debug/net8.0/prog.dll
+/home/andrew_zol/projects/codeforces/443/A/prog/obj/Debug/net8.0/refint/prog.dll
+/home/andrew_zol/projects/codeforces/443/A/prog/obj/Debug/net8.0/prog.pdb
+/home/andrew_zol/projects/codeforces/443/A/prog/obj/Debug/net8.0/prog.genruntimeconfig.cache
+/home/andrew_zol/projects/codeforces/443/A/prog/obj/Debug/net8.0/ref/prog.dll

@@ -1,7 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve() {}
+long long solve(long long x, long long y, long long n) {
+  long long rem = n % x;
+  if (rem == y) {
+    return n;
+  }
+
+  if (rem < y) {
+    return n - x - rem + y;
+  }
+
+  if (rem > y) {
+    return n - rem + y;
+  }
+
+  assert(false);
+}
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -11,14 +26,9 @@ int main() {
   cin >> t;
 
   while (t--) {
-    int x, y, n;
+    long long x, y, n;
     cin >> x >> y >> n;
 
-    for (int i = n; i >= 0; i++) {
-      if (i % x == y) {
-        cout << i << '\n';
-        break;
-      }
-    }
+    cout << solve(x, y, n) << '\n';
   }
 }

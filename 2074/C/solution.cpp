@@ -2,21 +2,20 @@
 using namespace std;
 
 int solve(int x) {
-  // calculate binary inversion of x
-  int inv = ~x;
-
-  // in rightess significant bit
-  int rsb = 0;
-  int k = 1;
-  while (k < inv) {
-    if (k & inv) {
-      rsb = k;
+  int answer = -1;
+  for (int i = 0; i <= 30; i++) {
+    for (int j = 0; j <= 30; j++) {
+      if (i == j)
+        continue;
+      int y = 0;
+      y = (1 << i) | (1 << j);
+      if ((y < x) && (x + y > (x ^ y)) && ((x ^ y) + y > x)) {
+        answer = y;
+      }
     }
-    k <<= 1;
   }
 
-  for (int i = 0; (1 << i) <= rsb; i++) {
-  }
+  return answer;
 }
 
 int main() {

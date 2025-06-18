@@ -1,19 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(vector<vector<int>> &a) {
+void solve() {
   int maxVal = 0;
-  int n = a.size();
-  int m = a[0].size();
-  vector<pair<int, int>> maxPositions;
+  int n, m;
+  cin >> n >> m;
+  vector<vector<int>> a(n, vector<int>(m));
+
+  for (int i = 0; i < n; ++i) {
+    for (int j = 0; j < m; ++j) {
+      cin >> a[i][j];
+      maxVal = max(maxVal, a[i][j]);
+    }
+  }
+
+  vector<int> rc(n, 0), cc(m, 0);
+  set<pair<int, int>> maxPositions;
+  int total = 0;
+
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {
-      if (a[i][j] > maxVal) {
-        maxVal = a[i][j];
-        maxPositions.clear();
-      }
       if (a[i][j] == maxVal) {
-        maxPositions.push_back({i, j});
+        rc[i]++;
+        cc[j]++;
+        maxPositions.insert({i, j});
+        total++;
       }
     }
   }
@@ -21,17 +32,15 @@ void solve(vector<vector<int>> &a) {
   bool isGood = false;
 
   for (int i = 0; i < n && !isGood; i++) {
-    unordered_set<int> cols;
-    for (int j = 0; j < maxPositions.size(); j++) {
-      if (maxPositions[j].first != i) {
-        cols.insert(maxPositions[j].second);
-        if (cols.size() > 1) {
-          break;
-        }
+    for (int j = 0; j < m; j++) {
+      int c = rc[i] + cc[j];
+      if (a[i][j] == maxVal)
+        c--;
+      if (c == total) {
+        isGood = true;
+        break;
       }
     }
-    if (cols.size() <= 1)
-      isGood = true;
   }
 
   cout << (isGood ? (maxVal - 1) : maxVal) << '\n';
@@ -44,16 +53,7 @@ int main() {
   int t;
   cin >> t;
   while (t--) {
-    int n, m;
-    cin >> n >> m;
-    vector<vector<int>> a(n, vector<int>(m));
 
-    for (int i = 0; i < n; ++i) {
-      for (int j = 0; j < m; ++j) {
-        cin >> a[i][j];
-      }
-    }
-
-    solve(a);
+    solve();
   }
 }

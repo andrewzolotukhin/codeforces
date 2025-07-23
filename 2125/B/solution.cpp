@@ -5,7 +5,7 @@ long long solve() {
   long long a, b, k;
   cin >> a >> b >> k;
 
-  int g = gcd(a, b);
+  long long g = gcd(a, b);
   a = a / g;
   b = b / g;
 

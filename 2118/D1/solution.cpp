@@ -2,7 +2,8 @@
 using namespace std;
 
 void solve() {
-  int n, k;
+  int n;
+  long long k;
   cin >> n >> k;
   vector<long long> p(n), d(n);
 
@@ -32,15 +33,16 @@ void solve() {
     if (currentTime == d[currentSignal])
       direction = false;
 
-    vector<vector<vector<bool>>> visited(
-        n, vector<vector<bool>>(2, vector<bool>(k, false)));
+    set<pair<long long, int>> visited;
 
     while (true) {
-      if (visited[currentSignal][direction][currentTime]) {
+      pair<long long, int> key = {(((long long)currentTime << 50) | direction),
+                                  (currentSignal)};
+      if (visited.count(key)) {
         cout << "NO\n";
         break;
       }
-      visited[currentSignal][direction][currentTime] = true;
+      visited.insert(key);
       if (direction) {
         int nextSignal = currentSignal + 1;
         if (nextSignal == n) {

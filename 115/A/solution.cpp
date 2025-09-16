@@ -1,20 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+int a[10000005];
 int main() {
-  int a, b, c, g, l, x[10000];
-  cin >> a;
-  for (l = 1; l <= a; l++)
-    cin >> x[l];
-  for (l = 1; l <= a; l++) {
-    b = x[l];
-    g = 0;
-    while (b != -1) {
-      b = x[b];
-      g++;
+  long long n, ans = 0;
+  cin >> n;
+  for (int i = 1; i <= n; i++)
+    cin >> a[i];
+  for (int i = 1; i <= n; i++) {
+    long long temp = a[i], t = 1;
+    while (temp != -1) {
+      t++;
+      temp = a[temp];
     }
-    if (g > c)
-      c = g;
+    ans = max(ans, t);
   }
-  cout << c + 1;
+  cout << ans;
 }
